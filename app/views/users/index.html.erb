@@ -1,0 +1,5 @@
+<% @title = "All Users" %>
+<h1>Pick your Celebrity! </h1>
+<% for user in @users %>
+	<h2><%=link_to("#{user.first_name} #{user.last_name}", controller: "photos", action: "index", id: user.id) %> </h2>
+<%end%>

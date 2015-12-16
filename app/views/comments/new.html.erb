@@ -1,0 +1,19 @@
+<div class= "photo">
+	<%= image_tag(@current_photo.file_name) %>	
+</div>
+
+<%if flash[:notice] %>
+	<div class="error_message">
+	<%= flash[:notice] %>
+	</div>
+<%end%>
+
+<% if session[:userid] != nil %>
+	<%= form_for(@comment, :method=> :post, :url =>{:action => :create, :photo_id => @current_photo.id, :photo_user_id =>@current_photo.user_id}) do |form| %>
+		<%= form.text_area :comment %>
+		<%= form.submit "Create Comment" %>
+	<% end %>
+<% else %>
+	<h2>Please Login to add a comment </h2>
+<%end%>
+

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title><%= @title %></title>
+  <%= stylesheet_link_tag    'application', media: 'all' %>
+  <%= javascript_include_tag('Tagger.js') %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<div id="left"></div>
+<div id="right"></div>
+<div id="top">
+	<h1>Simar Mangat</h1>
+	<% if session[:userid] == nil %>
+		<h2><%=link_to("Login", controller: "users", action: "login") %> </h2>
+	<% else %>
+		<h2>Hi <%=session[:first_name]%>! <%=link_to("Logout", controller: "users", action: "logout") %> </h2>
+	<%end%>
+	<p id="paget"><%= @title %> </p>
+</div>
+
+<div id="bottom"></div>
+
+<div class= "content">
+	<%= yield %>
+</div>
+
+</body>
+</html>

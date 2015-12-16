@@ -1,0 +1,8 @@
+<% if session[:userid] != nil %>
+	<%= form_for(@photo, :method=> :post, :url =>{:action => :create}) do |form| %>
+		<%= form.file_field(:photo) %>
+		<%= form.submit "Submit" %>
+	<% end %>
+<% else %>
+	<h2>Please Login to upload a photo </h2>
+<%end%>

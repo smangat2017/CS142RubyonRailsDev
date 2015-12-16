@@ -1,0 +1,12 @@
+<h3>Error! Invalid user/password. Please Try Again.</h3>
+
+
+<%= form_tag("post_login", :method => "post") do %>
+	<%= label_tag(:text_val, "Login:") %>
+	<%= text_field_tag(:login) %>
+	<br></br>
+	<%= label_tag(:text_val, "Password:") %>
+	<%= text_field_tag(:password) %>
+	<br></br>
+ 	<%= submit_tag("Submit") %>
+<% end %>

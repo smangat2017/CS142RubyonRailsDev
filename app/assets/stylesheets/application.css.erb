@@ -1,0 +1,122 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require_self
+ *= require_tree .
+ */
+
+body{
+	margin: 0px;
+	padding-top: 0px;
+	text-align: center;
+	font-family: Avenir, helvetica;
+}
+
+h1{
+	color: #004834;
+	font-size: 30px;
+	padding: 0px;
+	margin: 0px auto;
+}
+
+h2{
+	font-size: 15px;
+}
+
+h3{
+	padding-left: 30px;
+	padding-right: 30px;
+	font-size: 10px;
+}
+
+img{
+	max-width: 300px;
+	max-height: 300px;
+}
+
+#top, #bottom, #left, #right {
+	background-image: url(<%= image_path("waves.gif") %>);
+	background-repeat: repeat;
+	position: fixed;
+}
+#left, #right {
+	top: 0; bottom: 0;
+	width: 15px;
+}
+#left { left: 0; }
+#right { right: 0; }
+#top, #bottom {
+	left: 0; right: 0;
+	height: 15px;
+}
+#top { 	
+	top: 0; 
+	height: 110px;
+	width: 100%;
+	position: absolute;
+}
+#bottom { 
+	bottom: 0; 
+}
+
+#paget{
+	font-size: 16px;
+	margin-top: 0px;
+	font-weight: normal;
+	color: black;
+}
+
+
+.photo, #photo_tag{
+	position: relative;
+	display: inline-block;
+	line-height: 0px;
+}
+
+#rectangle_tag{
+	position: absolute;
+	border-style: solid;
+    border-width: 2px;
+    border-color: white;
+}
+
+.rectangle_display{
+	position: absolute;
+	border-style: dashed;
+    border-width: 1px;
+    border-color: white;
+    color: transparent;
+}
+
+.content{
+	font-size: 14px;
+	padding-top: 120px;
+	padding-bottom: 120px;
+	color: black;
+}
+
+.footer{
+	text-align: center;
+	font-size: 10px;
+	margin-top: 30px;
+}
+
+.error_message{
+	color: red;
+}
+.success_message{
+	color: green;
+}
+
+.rectangle_display:hover{
+	color: white;
+	border-width: 0px;
+}
+

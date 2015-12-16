@@ -1,0 +1,26 @@
+<% if @user == nil%>
+	<h1>Sorry, user not found in database</h1
+<% else %>
+
+<% @title = "#{@user.first_name} #{@user.last_name}" %>
+	<% for photo in @photos %>
+		<div class= "photo">
+			<%= image_tag("#{photo.file_name}", :id=>"#{photo.id}") %>
+			<% for tag in photo.tags %>
+				<div class= "rectangle_display" style="top:<%=tag.y_coord %>px; left:<%=tag.x_coord%>px; width:<%=tag.width%>px; height:<%=tag.height%>px"> <%=tag.user.first_name + tag.user.last_name%></div>
+			<% end %>
+		</div>
+		<h3>Photo Creation Time: <%= photo.date_time %></h3>
+		<h2> <%=link_to("Tag Photo", controller: "tags", action: "new", id: photo.id)%></h2>
+		<h2> <%=link_to("Add New Comment", controller: "comments", action: "new", id: photo.id)%></h2>
+		<% for comment in photo.comments %>
+		 	<h2> <%=link_to("#{comment.user.first_name} #{comment.user.last_name}", controller: "photos", action: "index", id: comment.user.id)%> commented: <%= comment.comment %></h2>
+			<h3>Comment Time: <%= comment.date_time %></h3>
+			<br></br>
+		<%end%>
+		<br></br>
+	<%end%>
+	<% if @user.id.to_i == session[:userid].to_i %>
+		<%=link_to("Upload A Photo To Your Page!", controller: "photos", action: "new")%>
+	<% end %>
+<%end%>

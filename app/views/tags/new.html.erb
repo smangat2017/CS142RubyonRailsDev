@@ -1,0 +1,40 @@
+<%if flash[:alert] %>
+	<div class="error_message">
+		<%= flash[:alert] %>
+	</div>
+<%end%>
+
+<%if flash[:notice] %>
+	<div class="success_message">
+		<%= flash[:notice] %>
+	</div>
+<%end%>
+
+<div id="photo_tag" class= "photo">
+	<%= image_tag(@current_photo.file_name) %>
+	<div id="rectangle_tag"></div>	
+</div>
+
+<%= form_for(@tag, :method=> :post, :url =>{:action => :create, :photo_id => @current_photo.id}) do |form| %>
+		<%= form.hidden_field :width%>
+		<%= form.hidden_field :height %>
+		<%= form.hidden_field :x_coord %>
+		<%= form.hidden_field :y_coord %>
+		<%= form.label(:user_id,"Select User")%>
+		<!-- define a virtual attribute for the user model to generate the first and last name!  -->
+		<%= form.collection_select(:user_id, @all_users, :id, :fullname) %>
+
+		<br></br>
+
+		<%= form.submit "Create Tag" %>
+<% end %>
+
+<h2><%=link_to("Back to Photos Page", controller: "photos", action: "index", id: @current_photo.user_id) %> </h2>
+
+<script type="text/javascript">
+  //<![CDATA[
+  		window.onload = function(){ 
+  			new Tagger("photo_tag","rectangle_tag","tag_width","tag_height","tag_x_coord","tag_y_coord");
+  		};
+  //]]>
+ </script>

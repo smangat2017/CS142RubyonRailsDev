@@ -1,0 +1,25 @@
+<% if flash[:notice] %>
+	<div class = "error_message">
+		<%= flash[:notice] %>
+	</div>
+<% end %>
+
+<%= form_for(@user, :method=> :post, :url =>{:action => :create}) do |form| %>
+		<%= form.label(:first_name,"First Name")%>
+		<%= form.text_field :first_name%>
+		<br></br>
+		<%= form.label(:last_name,"Last Name")%>
+		<%= form.text_field :last_name %>
+		<br></br>
+		<%= form.label(:login,"Login")%>
+		<%= form.text_field :login %>
+		<br></br>
+		<%= form.label(:password,"Password")%>
+		<%= form.password_field :password %>
+		<br></br>
+
+		<%= form.label(:retyped,"Retype your password")%>
+		<%= form.password_field :retyped %>
+		<br></br>
+		<%= form.submit "Create User" %>
+<% end %>
